@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index()
+   public function index()
     {
-        return 'Ini adalah halaman Daftar Film (Diatur dari MovieController)';
+        // Mengarahkan ke file resources/views/movies/index.blade.php
+        return view('movies.index');
     }
 
     public function create()
