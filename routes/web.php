@@ -10,6 +10,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Halaman Katalog Publik (Konsumsi API - Bisa diakses siapa saja)
+Route::get('/katalog', function () {
+    return view('katalog');
+});
+
 // ==============================================
 // AREA KHUSUS PETUGAS (Harus Login)
 // ==============================================
