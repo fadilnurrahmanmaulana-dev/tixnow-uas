@@ -1,23 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\BookingController;
 
-// Route untuk Halaman Utama (Dashboard)
 Route::get('/', function () {
-    return view('welcome'); // Sementara pakai view bawaan Laravel
+    return view('welcome');
 });
 
-// Route untuk Daftar Film
-Route::get('/movies', function () {
-    return 'Ini adalah halaman Daftar Film (TixNow)';
-});
+// Route yang sudah dihubungkan ke Controller
+Route::get('/movies', [MovieController::class, 'index']);
+Route::get('/movies/create', [MovieController::class, 'create']);
+Route::post('/movies', [MovieController::class, 'store']);
 
-// Route untuk Daftar Studio / Genre
-Route::get('/studios', function () {
-    return 'Ini adalah halaman Daftar Studio Bioskop';
-});
-
-// Route untuk Pemesanan Tiket
-Route::get('/bookings', function () {
-    return 'Ini adalah halaman Pemesanan Tiket';
-});
+Route::get('/bookings', [BookingController::class, 'index']);
