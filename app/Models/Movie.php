@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    // Mengizinkan kolom ini diisi melalui form (Mass Assignment)
     protected $fillable = [
         'judul', 
         'sutradara', 
@@ -14,4 +13,10 @@ class Movie extends Model
         'sinopsis', 
         'stok_tiket'
     ];
+
+    // Relasi (Has Many): Satu film bisa dipesan BANYAK kali
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

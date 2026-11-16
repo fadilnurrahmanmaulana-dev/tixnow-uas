@@ -34,4 +34,35 @@ class MovieController extends Controller
         // Arahkan kembali ke halaman daftar film
         return redirect('/movies');
     }
+    public function edit($id)
+    {
+        $movie = Movie::findOrFail($id); // Cari data film berdasarkan ID
+        return view('movies.edit', compact('movie')); // Tampilkan form edit
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi inputan
+        $request->validate([
+            'judul' => 'required|string',
+            'sutradara' => 'required|string',
+            'durasi' => 'required|integer',
+            'stok_tiket' => 'required|integer',
+        ]);
+
+        // Cari dan update datanya
+        $movie = Movie::findOrFail($id);
+        $movie->update($request->all());
+
+        return redirect('/movies');
+    }
+
+    public function destroy($id)
+    {
+        // Cari dan hapus datanya
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        return redirect('/movies');
+    }
 }
