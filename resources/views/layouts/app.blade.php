@@ -1,38 +1,36 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - TixNow</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
-        header { background-color: #1a1a2e; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        header a { color: white; text-decoration: none; margin: 0 10px; font-weight: bold; }
-        header a:hover { color: #e94560; }
-        .container { padding: 20px; max-width: 1000px; margin: auto; background: white; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { color: #16213e; border-bottom: 2px solid #e94560; padding-bottom: 10px; }
-        footer { text-align: center; padding: 20px; margin-top: 40px; color: #666; font-size: 0.9em; }
-    </style>
-</head>
-<body>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <header>
-        <div style="font-size: 1.5em; font-weight: bold; color: #e94560;">🍿 TixNow</div>
-        <nav>
-            <a href="{{ url('/') }}">Beranda</a>
-            <a href="{{ url('/movies') }}">Daftar Film</a>
-            <a href="{{ url('/bookings') }}">Pemesanan</a>
-        </nav>
-    </header>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <div class="container">
-        <!-- Bagian ini akan diisi oleh konten dari halaman lain -->
-        @yield('content')
-    </div>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <footer>
-        &copy; {{ date('Y') }} TixNow Bioskop. All rights reserved.
-    </footer>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100">
+            @include('layouts.navigation')
 
-</body>
+            <!-- Page Heading -->
+            @isset($header)
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
+
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+    </body>
 </html>
