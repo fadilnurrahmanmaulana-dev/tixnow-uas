@@ -17,7 +17,7 @@
             <th>Stok Tiket</th>
             <th>Aksi</th>
         </tr>
-        @forelse ($movies as$movie)
+        @forelse ($movies as $movie)
             <tr>
                 <td>{{ $movie->judul }}</td>
                 <td>{{ $movie->sutradara }}</td>

@@ -18,5 +18,5 @@ Proyek Ujian Akhir Semester (UAS) - Membangun Aplikasi Web Pemesanan Tiket Biosk
 
 1. **Clone repositori ini:**
    ```bash
-   git clone [https://github.com/USERNAME-GITHUB-KAMU/tixnow.git](https://github.com/USERNAME-GITHUB-KAMU/tixnow.git)
-   cd tixnow
+   git clone https://github.com/fadilnurrahmanmaulana-dev/tixnow-uas.git
+   cd tixnow-uas

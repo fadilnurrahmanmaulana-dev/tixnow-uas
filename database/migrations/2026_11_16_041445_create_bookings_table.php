@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            // Menghubungkan ke tabel customers dan movies
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->foreignId('movie_id')->constrained('movies')->onDelete('cascade');
-            
             $table->date('tanggal_booking');
             $table->integer('jumlah_tiket');
-            $table->string('status')->default('Berhasil'); // Berhasil / Batal
+            $table->string('status')->default('Berhasil');
             $table->timestamps();
         });
     }
